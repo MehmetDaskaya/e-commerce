@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Your E-Commerce Store</title>
+    <!-- Include Bulma CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar with Cart -->
+    <header class="section">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+              <h1 class="title">Your E-Commerce Store</h1>
+            </a>
+          </div>
+
+          <div id="navbar" class="navbar-menu">
+            <div class="navbar-end">
+              <!-- Add more navigation links as needed -->
+              <a class="navbar-item" href="products.html"> Products </a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> Cart </a>
+                <!-- Cart Dropdown -->
+                <div class="navbar-dropdown">
+                  <!-- Cart items will be dynamically populated using JavaScript -->
+                  <div id="cart-items"></div>
+                  <hr class="navbar-divider" />
+                  <p class="navbar-item">
+                    Total: $<span id="totalAmount">0.00</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="section">
+      <div class="container">
+        <div class="buttons">
+          <button class="button" onclick="clearFilters()">See All Items</button>
+          <button class="button" onclick="filterProducts('electronics')">
+            Electronics
+          </button>
+          <button class="button" onclick="filterProducts('jewelery')">
+            Jewelery
+          </button>
+          <button class="button" onclick="filterProducts('men\'s clothing')">
+            Men's Clothing
+          </button>
+          <button class="button" onclick="filterProducts('women\'s clothing')">
+            Women's Clothing
+          </button>
+          <!-- Add more buttons for other categories -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <section id="products" class="section"></section>
+
+    <!-- Include JavaScript for dynamic product loading and cart functionality -->
+    <script src="/scripts/products.js"></script>
+  </body>
+</html>
