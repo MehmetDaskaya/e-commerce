@@ -68,8 +68,6 @@ function seeCart() {
 }
 
 
-
-
 // Function to remove the notification when the close button is clicked
 function removeNotification(deleteButton) {
     const notificationDiv = deleteButton.parentElement;
@@ -134,9 +132,9 @@ function populateProducts(category) {
     const columnsContainer = document.createElement("div");
     columnsContainer.classList.add("columns", "is-multiline");
 
-    filteredProducts.forEach(product => {
+    filteredProducts.forEach((product, index, array) => {
         const productDiv = document.createElement("div");
-        productDiv.classList.add("column", "is-half");
+        productDiv.classList.add("column", "is-half", "is-full-mobile");
         productDiv.innerHTML = `
         <div class="box product-box" style="min-height: 250px;">
             <div class="media">
@@ -149,7 +147,7 @@ function populateProducts(category) {
                 <div class="media-content">
                     <h3 class="title is-5">${product.title}</h3>
                     <p class="description" id="description_${product.id}">${truncateDescription(product.description)}<span class="has-text-link" onclick="seeMore(${product.id})"> See more</span></p>
-                    <div class="price-and-button is-flex is-justify-content-space-between mt-3">
+                    <div class="price-and-button is-flex is-justify-content-space-between mt-3 ">
                         <p class="button is-static is-primary price">$${product.price.toFixed(2)}</p>
                         <button class="button is-primary" onclick="addToCart(${product.id})">Add to Cart</button>
                     </div>
@@ -157,6 +155,12 @@ function populateProducts(category) {
             </div>
         </div>
         `;
+
+        // Add bottom margin to the last item
+        if (index === array.length - 1) {
+            productDiv.style.marginBottom = "200px";
+        }
+
         columnsContainer.appendChild(productDiv);
     });
 
