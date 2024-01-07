@@ -61,12 +61,6 @@ function showNotification(itemName, itemPrice) {
     }, 5000);
 }
 
-// Function to navigate to the cart page
-function seeCart() {
-    // Add logic to navigate to the cart page (replace the alert with actual navigation code)
-    alert("Navigate to Cart Page"); // Replace this with your actual navigation code
-}
-
 
 // Function to remove the notification when the close button is clicked
 function removeNotification(deleteButton) {
@@ -130,7 +124,7 @@ function populateProducts(category) {
     const filteredProducts = category ? products.filter(product => product.category === category) : products;
 
     const columnsContainer = document.createElement("div");
-    columnsContainer.classList.add("columns", "is-multiline");
+    columnsContainer.classList.add("columns", "is-multiline", "ml-6-desktop", "mr-6-desktop");
 
     filteredProducts.forEach((product, index, array) => {
         const productDiv = document.createElement("div");
@@ -139,15 +133,16 @@ function populateProducts(category) {
         <div class="box product-box" style="min-height: 250px;">
             <div class="media">
                 <div class="media-left is-align-self-center">
-                    <figure class="image is-128x128">
-                        <img src="${product.image}" alt="${product.title}">
-                    </figure>
+                <figure class="image is-square is-128x128">
+                    <img src="${product.image}" alt="${product.title}">
+                </figure>
                 </div>
                 
                 <div class="media-content">
                     <h3 class="title is-5">${product.title}</h3>
                     <p class="description" id="description_${product.id}">${truncateDescription(product.description)}<span class="has-text-link" onclick="seeMore(${product.id})"> See more</span></p>
-                    <div class="price-and-button is-flex is-justify-content-space-between mt-3 ">
+                    <div class="price-and-button is-flex is-justify-content-space-between mt-3" style="overflow-x: hidden;">
+
                         <p class="button is-static is-primary price">$${product.price.toFixed(2)}</p>
                         <button class="button is-primary" onclick="addToCart(${product.id})">Add to Cart</button>
                     </div>
@@ -196,5 +191,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to navigate to the cart page
 function seeCart() {
+    // Save the cart data to localStorage
+    updateLocalStorage();
+
+    // Redirect to cart.html
     window.location.href = 'cart.html';
+}
+
+// Initial population of products when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    // Load the cart from localStorage
+    loadCart();
+    fetchProducts();
+});
+
+// Function to load the cart from localStorage
+function loadCart() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+        updateCart();
+    }
 }
