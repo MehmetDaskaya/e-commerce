@@ -34,10 +34,6 @@ function addToCart(productId) {
     }
 }
 
-
-
-
-
 // Function to show a notification
 function showNotification(itemName, itemPrice) {
     const notificationContainer = document.createElement("div");

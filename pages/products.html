@@ -14,40 +14,38 @@
   </head>
   <body>
     <!-- Navbar with Cart -->
-    <header class="section">
-      <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-              <h1 class="is-size-4">Your E-Commerce Store</h1>
-            </a>
-          </div>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="" href="#">
+          <img src="/public/images/DAS.png" alt="Logo" class="logo" />
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">Homepage</a>
+          <a class="navbar-item" href="#">Products</a>
+          <a class="navbar-item" href="#">Contact</a>
 
-          <div id="navbar" class="navbar-menu">
-            <div class="navbar-end">
-              <!-- Add more navigation links as needed -->
-              <a class="navbar-item" href="products.html"> Products </a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"> Cart </a>
-                <!-- Cart Dropdown -->
-                <div class="navbar-dropdown">
-                  <!-- Cart items will be dynamically populated using JavaScript -->
-                  <div id="cart-items"></div>
-                  <hr class="navbar-divider" />
-                  <p class="navbar-item">
-                    Total: $<span id="totalAmount">0.00</span>
-                  </p>
-                </div>
-              </div>
+          <div class="navbar-item has-dropdown is-hoverable is-right">
+            <a class="navbar-link"> Cart </a>
+            <!-- Cart Dropdown -->
+            <div class="navbar-dropdown">
+              <!-- Cart items will be dynamically populated using JavaScript -->
+              <div id="cart-items"></div>
+              <hr class="navbar-divider" />
+              <p class="navbar-item">
+                Total: $<span id="totalAmount">0.00</span>
+              </p>
             </div>
           </div>
-        </nav>
+        </div>
       </div>
-    </header>
+    </nav>
 
     <!-- Filter Buttons -->
     <div class="section">
-      <div class="container">
+      <div class="categoriesButtons">
         <div class="buttons">
           <button class="button" onclick="clearFilters()">See All Items</button>
           <button class="button" onclick="filterProducts('electronics')">

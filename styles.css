@@ -1,7 +1,133 @@
 body {
+  font-family: "Arial", sans-serif;
   background: linear-gradient(
     to bottom,
-    rgb(120, 120, 255),
+    rgb(229, 255, 115),
+    rgb(241, 255, 176),
     rgb(255, 255, 255)
   );
+  margin: 0;
+  padding: 0;
+}
+
+nav.navbar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  padding-top: 20px;
+  width: 100px; /* Adjust the width as needed */
+}
+.navbar,
+.navbar-menu,
+.navbar-start,
+.navbar-end {
+  align-items: stretch;
+  display: flex;
+  padding: 0;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.navbar-start {
+  justify-content: flex-start;
+  margin-right: auto;
+}
+.navbar-end {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+.navbar {
+  display: flex;
+}
+.navbar-item {
+  display: flex;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swiper-container {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.swiper-slide img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+section.section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.box {
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.box:hover {
+  background-color: #f4f4f4;
+}
+
+footer.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Products Screen Styles */
+
+.categories-buttons {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1088px) {
+  .navbar-menu {
+    display: flex;
+    flex-direction: row !important; /* Change to column for vertical stacking on smaller screens */
+    align-items: center;
+  }
+
+  .navbar-start {
+    flex-direction: row !important; /* Change to column for vertical stacking on smaller screens */
+    align-items: center;
+  }
+
+  .navbar-item {
+    margin-right: 0; /* Reset margin for vertical stacking */
+    margin-bottom: 10px; /* Add some space between items */
+  }
 }

@@ -2,45 +2,103 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your E-Commerce Store</title>
-    <!-- Include Bulma CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css" />
+    <title>Your E-Commerce Website</title>
   </head>
   <body>
-    <!-- Header Section with Navbar -->
-    <header class="section">
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="" href="#">
+          <img src="/public/images/DAS.png" alt="Logo" class="logo" />
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#">Homepage</a>
+          <a class="navbar-item" href="/pages/products.html">Products</a>
+          <a class="navbar-item" href="#">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/public/images/1.png" alt="Product 1" />
+          </div>
+          <div class="swiper-slide">
+            <img src="/public/images/2.png" alt="Product 2" />
+          </div>
+          <div class="swiper-slide">
+            <img src="/public/images/3.png" alt="Product 3" />
+          </div>
+          <!-- Add more items as needed -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <!-- Product Categories -->
+    <section class="section">
       <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-              <h1 class="title">Your E-Commerce Store</h1>
+        <div class="columns">
+          <div class="column">
+            <a href="#" class="box">
+              <img src="category1.jpg" alt="Category 1" />
+              <p>Category 1</p>
             </a>
           </div>
-
-          <div id="navbar" class="navbar-menu">
-            <div class="navbar-end">
-              <a class="navbar-item" href="#categories"> Categories </a>
-              <a class="navbar-item" href="/pages/products.html"> Products </a>
-            </div>
+          <div class="column">
+            <a href="#" class="box">
+              <img src="category2.jpg" alt="Category 2" />
+              <p>Category 2</p>
+            </a>
           </div>
-        </nav>
+          <!-- Add more columns for additional categories -->
+        </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Footer Section -->
-    <footer class="section">
-      <div class="container">
-        <!-- Footer content can be added here -->
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Your E-Commerce</strong> &copy; 2024. All rights reserved.
+        </p>
       </div>
     </footer>
 
-    <!-- Include JavaScript -->
-    <script src="/scripts/main.js"></script>
+    <!-- JavaScript for Carousel -->
+    <!-- Bootstrap JavaScript (without jQuery) -->
+    <!-- Swiper JavaScript -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var mySwiper = new Swiper(".swiper-container", {
+          loop: true,
+          effect: "fade", // Change the transition effect to fade
+          autoplay: {
+            delay: 2000,
+          },
+        });
+      });
+    </script>
   </body>
 </html>
