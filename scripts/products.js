@@ -134,12 +134,16 @@ function updateCart() {
 // Function to remove a product from the cart
 function removeFromCart(productId) {
     const indexToRemove = cart.findIndex(item => item.id === productId);
-    if (indexToRemove !== -1) {
-        const removedItem = cart.splice(indexToRemove, 1)[0];
-        totalAmount -= removedItem.price;
-        updateCart();
 
-        // Update localStorage
+    if (indexToRemove !== -1) {
+        const removedItem = cart[indexToRemove];
+        totalAmount -= removedItem.price * removedItem.quantity;
+        removedItem.quantity -= 1;
+        if (removedItem.quantity === 0) {
+            cart.splice(indexToRemove, 1);
+        }
+
+        updateCart();
         updateLocalStorage();
     }
 }
