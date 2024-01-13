@@ -60,3 +60,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Function to open the login modal
+function openLoginModal() {
+    const loginModal = document.getElementById('loginModal');
+    loginModal.style.display = 'flex';
+}
+
+// Function to close the login modal
+function closeLoginModal() {
+    const loginModal = document.getElementById('loginModal');
+    loginModal.style.display = 'none';
+}
+
+// Function to handle login form submission (you can customize this based on your needs)
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    // Add your login logic here
+    // Close the login modal after successful login
+    closeLoginModal();
+});

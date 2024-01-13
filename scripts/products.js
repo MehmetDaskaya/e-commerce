@@ -63,7 +63,7 @@ function showNotification(itemName, itemPrice) {
     notificationContainer.style.top = "10px";
     notificationContainer.style.right = "10px";
     notificationContainer.style.zIndex = "999";
-    notificationContainer.classList.add("notification", "is-info", "is-light"); // Add "is-light" for better visibility
+    notificationContainer.classList.add("notification", "is-info", "is-light");
 
 
     if (itemName && itemPrice) {
@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to toggle the visibility of the floating cart icon
 function toggleFloatingCartIcon() {
     const floatingCartIcon = document.getElementById('floatingCartIcon');
-    if (window.scrollY > 200) { // Adjust the scroll threshold as needed
+    if (window.scrollY > 1) {
         floatingCartIcon.style.display = 'block';
     } else {
         floatingCartIcon.style.display = 'none';
@@ -338,7 +338,7 @@ function clearCartAndLocalStorage() {
     updateLocalStorage();
 }
 
-// Function to checkout (placeholder for future enhancement)
+// Function to checkout
 function checkout() {
     clearCartAndLocalStorage();
     window.location.href = 'cart.html';

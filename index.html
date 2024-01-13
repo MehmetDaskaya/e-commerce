@@ -11,10 +11,66 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="styles.css" />
     <title>DAS Commerce</title>
   </head>
   <body>
+    <!-- Floating Login Icon -->
+    <div
+      id="floatingLoginIcon"
+      class="floating-login-icon"
+      onclick="openLoginModal()"
+    >
+      <i class="fa-solid fa-user"></i>
+      <p>Login</p>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-background" onclick="closeLoginModal()"></div>
+      <div class="modal-content login-modal-content">
+        <!-- Logo at the top -->
+        <img src="/path/to/your/logo.png" alt="Logo" class="login-modal-logo" />
+
+        <!-- Login Form -->
+        <form>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Your username" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="password"
+                placeholder="Your password"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <button
+        class="modal-close is-large"
+        aria-label="close"
+        onclick="closeLoginModal()"
+      ></button>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -26,6 +82,7 @@
         <div class="navbar-start">
           <a class="navbar-item selected" href="#">Homepage</a>
           <a class="navbar-item" href="/pages/products.html">Products</a>
+          <a class="navbar-item" href="/pages/about.html">About Us</a>
           <a class="navbar-item" href="/pages/contact.html">Contact</a>
         </div>
       </div>
@@ -120,8 +177,8 @@
         <div class="footer-column">
           <h5>About Us</h5>
           <hr class="mb-3" style="width: 40%; background-color: #898989" />
-          <a href="#">Our Story</a>
-          <a href="#">Contact Us</a>
+          <a href="/pages/about.html">Our Story</a>
+          <a href="/pages/contact.html">Contact Us</a>
           <a href="#">Privacy Policy</a>
         </div>
         <div class="footer-column">
@@ -153,5 +210,6 @@
         });
       });
     </script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>

@@ -7,7 +7,8 @@ body {
     rgb(255, 255, 255)
   );
   margin: 0;
-  padding: 0;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .button {
@@ -29,6 +30,8 @@ nav.navbar {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .logo {
@@ -85,6 +88,9 @@ nav.navbar {
   border: none;
 }
 
+
+/* Home Screen Styles */
+
 .carousel {
   display: flex;
   flex-direction: column;
@@ -132,6 +138,53 @@ section.section {
   border-radius: 8px;
 }
 
+/* Floating Login Icon */
+.floating-login-icon {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-login-icon:hover {
+  background-color: #f0f0f0;
+}
+
+.floating-login-icon img {
+  width: 30px; 
+}
+
+/* Login Modal */
+#loginModal {
+  display: none;
+}
+
+.login-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-modal-logo {
+  max-width: 150px; 
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
 
 
 /* Products Screen Styles */
@@ -285,6 +338,8 @@ footer.footer {
   color: #ffffff;
   font-size: 14px;
   margin-top: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .footer-content {
