@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -20,57 +21,6 @@
     <title>DAS Commerce</title>
   </head>
   <body>
-    <!-- Floating Login Icon -->
-    <div
-      id="floatingLoginIcon"
-      class="floating-login-icon"
-      onclick="openLoginModal()"
-    >
-      <i class="fa-solid fa-user"></i>
-      <p>Login</p>
-    </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-      <div class="modal-background" onclick="closeLoginModal()"></div>
-      <div class="modal-content login-modal-content">
-        <!-- Logo at the top -->
-        <img src="/public/images/DAS.png" alt="Logo" class="login-modal-logo" />
-
-        <!-- Login Form -->
-        <form>
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Your username" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input
-                class="input"
-                type="password"
-                placeholder="Your password"
-              />
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <button class="button is-primary" type="submit">Login</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <button
-        class="modal-close is-large"
-        aria-label="close"
-        onclick="closeLoginModal()"
-      ></button>
-    </div>
-
     <!-- Navbar -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -197,6 +147,57 @@
         </div>
       </div>
     </footer>
+
+    <!-- Floating Login Icon -->
+    <div
+      id="floatingLoginIcon"
+      class="floating-login-icon"
+      onclick="openLoginModal()"
+    >
+      <i class="fa-solid fa-user"></i>
+      <p>Login</p>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-background" onclick="closeLoginModal()"></div>
+      <div class="modal-content login-modal-content">
+        <!-- Logo at the top -->
+        <img src="/public/images/DAS.png" alt="Logo" class="login-modal-logo" />
+
+        <!-- Login Form -->
+        <form>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Your username" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="password"
+                placeholder="Your password"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <button
+        class="modal-close is-large"
+        aria-label="close"
+        onclick="closeLoginModal()"
+      ></button>
+    </div>
     <!-- Swiper JavaScript -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
