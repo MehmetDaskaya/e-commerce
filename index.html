@@ -11,9 +11,8 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-    <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css" />
-    <title>Your E-Commerce Website</title>
+    <title>DAS Commerce</title>
   </head>
   <body>
     <!-- Navbar -->
@@ -25,9 +24,9 @@
       </div>
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="#">Homepage</a>
+          <a class="navbar-item selected" href="#">Homepage</a>
           <a class="navbar-item" href="/pages/products.html">Products</a>
-          <a class="navbar-item" href="#">Contact</a>
+          <a class="navbar-item" href="/pages/contact.html">Contact</a>
         </div>
       </div>
     </nav>
@@ -45,11 +44,8 @@
           <div class="swiper-slide">
             <img src="/public/images/3.png" alt="Product 3" />
           </div>
-          <!-- Add more items as needed -->
         </div>
-        <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
-        <!-- Add Navigation -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
@@ -58,42 +54,99 @@
     <!-- Product Categories -->
     <section class="section">
       <div class="container">
+        <p class="title is-size-2 has-text-weight-bold has-text-centered mb-4">
+          Categories
+        </p>
+        <hr
+          class="mb-3"
+          style="width: 50%; margin: auto; background-color: #898989"
+        />
         <div class="columns">
           <div class="column">
-            <a href="#" class="box">
-              <img src="category1.jpg" alt="Category 1" />
-              <p>Category 1</p>
+            <a href="/pages/products.html" class="box category_box">
+              <img
+                src="./public/images/menswear.png"
+                alt="menswear"
+                class="category_image"
+              />
             </a>
           </div>
           <div class="column">
-            <a href="#" class="box">
-              <img src="category2.jpg" alt="Category 2" />
-              <p>Category 2</p>
+            <a href="/pages/products.html" class="box category_box">
+              <img
+                src="./public/images/womenswear.png"
+                alt="womenswear"
+                class="category_image"
+              />
             </a>
           </div>
-          <!-- Add more columns for additional categories -->
+        </div>
+        <div class="columns">
+          <div class="column">
+            <a href="/pages/products.html" class="box category_box">
+              <img
+                src="./public/images/jewelery.png"
+                alt="Jewelery"
+                class="category_image"
+              />
+            </a>
+          </div>
+          <div class="column">
+            <a href="/pages/products.html" class="box category_box">
+              <img
+                src="./public/images/electronics.png"
+                alt="Electronics"
+                class="category_image"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Your E-Commerce</strong> &copy; 2024. All rights reserved.
-        </p>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="./public/images/DASwhite.png" alt="Logo" />
+        </div>
+        <div class="footer-column">
+          <h5>Categories</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="/pages/products.html">Electronics</a>
+          <a href="/pages/products.html">Fashion</a>
+          <a href="/pages/products.html">Jewelery</a>
+        </div>
+        <div class="footer-column">
+          <h5>About Us</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Our Story</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-column">
+          <h5>Customer Service</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Help & FAQs</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">Shipping</a>
+        </div>
+        <div class="footer-column">
+          <h5>Connect With Us</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="https://www.instagram.com/bucakyazilim/">Instagram</a>
+        </div>
       </div>
     </footer>
-
-    <!-- JavaScript for Carousel -->
-    <!-- Bootstrap JavaScript (without jQuery) -->
     <!-- Swiper JavaScript -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var mySwiper = new Swiper(".swiper-container", {
           loop: true,
-          effect: "fade", // Change the transition effect to fade
+          effect: "fade",
           autoplay: {
             delay: 2000,
           },

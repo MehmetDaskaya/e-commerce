@@ -19,20 +19,42 @@ async function fetchProducts() {
 
 // Function to add a product to the cart
 function addToCart(productId) {
-    const productToAdd = cart.find(product => product.id === productId);
-    if (!productToAdd) {
-        const selectedProduct = products.find(product => product.id === productId);
+    const productToAdd = cart.find((product) => product.id === productId);
+
+    if (productToAdd) {
+        // Increment quantity if the product is already in the cart
+        productToAdd.quantity += 1;
+
+        // Update total amount and cart UI
+        totalAmount += productToAdd.price;
+        updateCart();
+
+        // Update localStorage
+        updateLocalStorage();
+
+        // Show notification
+        showNotification(productToAdd.title, productToAdd.price);
+        console.log('Notification shown:', productToAdd.title, productToAdd.price);
+    } else {
+        const selectedProduct = products.find((product) => product.id === productId);
         if (selectedProduct) {
-            cart.push(selectedProduct);
-            totalAmount += selectedProduct.price;
+            // Add the product to the cart with quantity 1
+            const newItem = { ...selectedProduct, quantity: 1 };
+            cart.push(newItem);
+
+            // Update total amount and cart UI
+            totalAmount += newItem.price;
             updateCart();
-            showNotification(selectedProduct.title, selectedProduct.price);
 
             // Update localStorage
             updateLocalStorage();
+
+            // Show notification
+            showNotification(newItem.title, newItem.price);
         }
     }
 }
+
 
 // Function to show a notification
 function showNotification(itemName, itemPrice) {
@@ -41,13 +63,25 @@ function showNotification(itemName, itemPrice) {
     notificationContainer.style.top = "10px";
     notificationContainer.style.right = "10px";
     notificationContainer.style.zIndex = "999";
-    notificationContainer.classList.add("notification", "is-info");
+    notificationContainer.classList.add("notification", "is-info", "is-light"); // Add "is-light" for better visibility
 
-    notificationContainer.innerHTML = `
-        <button class="delete" onclick="removeNotification(this)"></button>
-        <strong>${itemName}</strong> added to cart. Price: $${itemPrice.toFixed(2)}. Total: $${totalAmount.toFixed(2)}
-        <button class="button is-primary" onclick="seeCart()">See Cart</button>
-    `;
+
+    if (itemName && itemPrice) {
+        // Notification for existing product in the cart
+        notificationContainer.innerHTML = `
+            <button class="delete" onclick="removeNotification(this)"></button>
+            <strong>${itemName}</strong> added to cart. Price: $${itemPrice.toFixed(2)}. Total: $${totalAmount.toFixed(2)}
+            <button class="button is-primary" onclick="seeCart()">See Cart</button>
+        `;
+    } else {
+        // Notification for new product added to the cart
+        const lastAddedItem = cart[cart.length - 1];
+        notificationContainer.innerHTML = `
+            <button class="delete" onclick="removeNotification(this)"></button>
+            <strong>${lastAddedItem.title}</strong> added to cart. Price: $${lastAddedItem.price.toFixed(2)}. Total: $${totalAmount.toFixed(2)}
+            <button class="button is-primary" onclick="seeCart()">See Cart</button>
+        `;
+    }
 
     document.body.appendChild(notificationContainer);
 
@@ -56,6 +90,7 @@ function showNotification(itemName, itemPrice) {
         removeNotification(notificationContainer.querySelector('.delete'));
     }, 5000);
 }
+
 
 
 // Function to remove the notification when the close button is clicked
@@ -67,22 +102,34 @@ function removeNotification(deleteButton) {
 
 // Function to update the cart dynamically
 function updateCart() {
-    const cartItemsContainer = document.getElementById("cart-items");
-    const totalAmountElement = document.getElementById("totalAmount");
-    cartItemsContainer.innerHTML = ''; // Clear existing cart items
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalAmountElement = document.getElementById('totalAmount');
 
-    cart.forEach(item => {
-        const cartItemDiv = document.createElement("div");
-        cartItemDiv.classList.add("cart-item");
-        cartItemDiv.innerHTML = `
-            <p>${item.title} - $${item.price.toFixed(2)}</p>
-            <button class="remove-from-cart-btn" onclick="removeFromCart(${item.id})">Remove</button>
-        `;
-        cartItemsContainer.appendChild(cartItemDiv);
-    });
+    if (cart.length === 0) {
+        // If the cart is empty, display a message
+        cartItemsContainer.innerHTML = '<p>Your cart is empty. Try adding products to the cart to continue shopping</p>';
+    } else {
+        // If the cart has items, display the items
+        cartItemsContainer.innerHTML = '';
 
+        cart.forEach((item) => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+            cartItemDiv.innerHTML = `
+                <p>${item.title} - $${item.price.toFixed(2)} x ${item.quantity}</p>
+                <button class="remove-from-cart-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                <button class="increase-quantity-btn" onclick="increaseQuantity(${item.id})">+</button>
+                <button class="decrease-quantity-btn" onclick="decreaseQuantity(${item.id})">-</button>
+            `;
+            cartItemsContainer.appendChild(cartItemDiv);
+        });
+    }
+
+    // Update the total amount
     totalAmountElement.textContent = totalAmount.toFixed(2);
 }
+
+
 
 // Function to remove a product from the cart
 function removeFromCart(productId) {
@@ -96,6 +143,33 @@ function removeFromCart(productId) {
         updateLocalStorage();
     }
 }
+
+// Function to increase the quantity of a product in the cart
+function increaseQuantity(productId) {
+    const productToUpdate = cart.find((product) => product.id === productId);
+    if (productToUpdate) {
+        productToUpdate.quantity += 1;
+        totalAmount += productToUpdate.price;
+        updateCart();
+
+        // Update localStorage
+        updateLocalStorage();
+    }
+}
+
+// Function to decrease the quantity of a product in the cart
+function decreaseQuantity(productId) {
+    const productToUpdate = cart.find((product) => product.id === productId);
+    if (productToUpdate && productToUpdate.quantity > 1) {
+        productToUpdate.quantity -= 1;
+        totalAmount -= productToUpdate.price;
+        updateCart();
+
+        // Update localStorage
+        updateLocalStorage();
+    }
+}
+
 
 // Function to update localStorage with the current cart state
 function updateLocalStorage() {
@@ -138,7 +212,6 @@ function populateProducts(category) {
                     <h3 class="title is-5">${product.title}</h3>
                     <p class="description" id="description_${product.id}">${truncateDescription(product.description)}<span class="has-text-link" onclick="seeMore(${product.id})"> See more</span></p>
                     <div class="price-and-button is-flex is-justify-content-space-between mt-3" style="overflow-x: hidden;">
-
                         <p class="button is-static is-primary price">$${product.price.toFixed(2)}</p>
                         <button class="button is-primary" onclick="addToCart(${product.id})">Add to Cart</button>
                     </div>
@@ -190,14 +263,16 @@ function seeCart() {
     // Save the cart data to localStorage
     updateLocalStorage();
 
-    // Redirect to cart.html
-    window.location.href = 'cart.html';
+    // Open the cart modal
+    openCartModal();
 }
 
 // Initial population of products when the page loads
 document.addEventListener("DOMContentLoaded", function () {
     // Load the cart from localStorage
     loadCart();
+    // Update the cart UI
+    updateCart();
     fetchProducts();
 });
 
@@ -210,3 +285,69 @@ function loadCart() {
         updateCart();
     }
 }
+
+// Initial population of products when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    // Load the cart from localStorage
+    loadCart();
+    fetchProducts();
+});
+
+// Function to toggle the visibility of the floating cart icon
+function toggleFloatingCartIcon() {
+    const floatingCartIcon = document.getElementById('floatingCartIcon');
+    if (window.scrollY > 200) { // Adjust the scroll threshold as needed
+        floatingCartIcon.style.display = 'block';
+    } else {
+        floatingCartIcon.style.display = 'none';
+    }
+}
+
+// Add an event listener for scroll events
+document.addEventListener('scroll', toggleFloatingCartIcon);
+
+// Initial call to set the initial state based on scroll position
+toggleFloatingCartIcon();
+
+// Function to open the cart modal
+function openCartModal() {
+    const cartModal = document.getElementById('cartModal');
+    cartModal.style.display = 'flex';
+
+    // Populate cart content dynamically
+    const cartModalContent = document.getElementById('cartModalContent');
+    cartModalContent.innerHTML = '';
+
+    cart.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item-modal');
+        cartItemDiv.innerHTML = `<p>${item.title} - $${item.price.toFixed(2)}</p>`;
+        cartModalContent.appendChild(cartItemDiv);
+    });
+
+    // Calculate and update the total amount
+    const cartTotal = document.getElementById('cartTotal');
+    cartTotal.textContent = totalAmount.toFixed(2);
+}
+
+// Function to clear the cart and local storage
+function clearCartAndLocalStorage() {
+    cart = [];
+    totalAmount = 0;
+    updateCart();
+    updateLocalStorage();
+}
+
+// Function to checkout (placeholder for future enhancement)
+function checkout() {
+    clearCartAndLocalStorage();
+    window.location.href = 'cart.html';
+}
+
+
+// Function to close the cart modal
+function closeCartModal() {
+    const cartModal = document.getElementById('cartModal');
+    cartModal.style.display = 'none';
+}
+

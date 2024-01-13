@@ -2,65 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart - Your E-Commerce Store</title>
-    <!-- Include Bulma CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Order Success - DAS Commerce</title>
   </head>
   <body>
-    <header class="section">
-      <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-              <h1 class="title">Your E-Commerce Store</h1>
-            </a>
-          </div>
-
-          <div id="navbar" class="navbar-menu">
-            <div class="navbar-end">
-              <!-- Add more navigation links as needed -->
-              <a class="navbar-item" href="products.html"> Products </a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"> Cart </a>
-                <!-- Cart Dropdown -->
-                <div class="navbar-dropdown">
-                  <!-- Cart items will be dynamically populated using JavaScript -->
-                  <div id="cart-items-dropdown"></div>
-                  <hr class="navbar-divider" />
-                  <p class="navbar-item">
-                    Total: $<span id="totalAmount">0.00</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="" href="#">
+          <img src="/public/images/DAS.png" alt="Logo" class="logo" />
+        </a>
       </div>
-    </header>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Cart</h1>
-
-        <div id="cart-items" class="columns is-multiline">
-          <!-- Cart items will be dynamically populated using JavaScript -->
-        </div>
-
-        <div class="columns">
-          <div class="column is-half">
-            <p class="title is-5">Total:</p>
-          </div>
-          <div class="column is-half has-text-right">
-            <p class="title is-5">$<span id="totalAmount">0.00</span></p>
-          </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">Homepage</a>
+          <a class="navbar-item" href="/pages/products.html">Products</a>
+          <a class="navbar-item" href="/pages/contact.html">Contact</a>
         </div>
       </div>
+    </nav>
+
+    <!-- Order Success Section -->
+    <section class="section has-text-centered">
+      <img
+        src="/public/images/order-success.png"
+        alt="Order Success Image"
+        width="500"
+        height="800"
+      />
+
+      <p class="title is-3">Order Successful!</p>
+
+      <a href="/pages/products.html" class="button is-primary"
+        >Return to Products</a
+      >
     </section>
 
-    <!-- Include JavaScript for dynamic cart loading -->
-    <script src="/scripts/cart.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="../public/images/DASwhite.png " alt="Logo" />
+        </div>
+        <div class="footer-column">
+          <h5>Categories</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="/pages/products.html">Electronics</a>
+          <a href="/pages/products.html">Fashion</a>
+          <a href="/pages/products.html">Jewelery</a>
+        </div>
+        <div class="footer-column">
+          <h5>About Us</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Our Story</a>
+          <a href="../pages/contact.html">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-column">
+          <h5>Customer Service</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Help & FAQs</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">Shipping</a>
+        </div>
+        <div class="footer-column">
+          <h5>Connect With Us</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="https://www.instagram.com/bucakyazilim/">Instagram</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

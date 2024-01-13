@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <!-- Include your custom styles if needed -->
+    <style>
+      .title {
+        color: #333;
+      }
+
+      .subtitle {
+        color: #555;
+      }
+
+      .columns {
+        margin-top: 30px;
+      }
+
+      .image {
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .content {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        margin-top: 20px;
+      }
+    </style>
+    <title>About Us</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="" href="#">
+          <img src="/public/images/DAS.png" alt="Logo" class="logo" />
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">Homepage</a>
+          <a class="navbar-item" href="/pages/products.html">Products</a>
+          <a class="navbar-item" href="/pages/contact.html">Contact</a>
+          <a class="navbar-item selected" href="#">About Us</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Us Section -->
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-1">About Us</h1>
+        <p class="subtitle is-4">
+          Welcome to DAS Commerce, where quality meets convenience.
+        </p>
+
+        <!-- Image Section -->
+        <div class="columns">
+          <div class="column box">
+            <div class="image is-4by3">
+              <img src="../public/images/DAS.png" alt="DAS logo" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content box">
+          <p>
+            At DAS Commerce, we are passionate about providing you with the best
+            shopping experience. Our mission is to offer a wide range of
+            high-quality products and exceptional customer service.
+          </p>
+          <p>
+            Whether you're looking for the latest electronics, trendy fashion,
+            or exquisite jewelry, we've got you covered. Our carefully curated
+            selection ensures that you find the perfect items to suit your
+            lifestyle.
+          </p>
+          <p>
+            Customer satisfaction is at the heart of everything we do. If you
+            have any questions or need assistance, our dedicated support team is
+            here to help. We value your trust and strive to make DAS Commerce
+            your go-to destination for all your shopping needs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="../public/images/DASwhite.png" alt="Logo" />
+        </div>
+        <div class="footer-column">
+          <h5>Categories</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="./products.html">Electronics</a>
+          <a href="./products.html">Fashion</a>
+          <a href="./products.html">Jewelery</a>
+        </div>
+        <div class="footer-column">
+          <h5>About Us</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Our Story</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-column">
+          <h5>Customer Service</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Help & FAQs</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">Shipping</a>
+        </div>
+        <div class="footer-column">
+          <h5>Connect With Us</h5>
+          <hr class="mb-3" style="width: 40%; background-color: #898989" />
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="https://www.instagram.com/bucakyazilim/">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
